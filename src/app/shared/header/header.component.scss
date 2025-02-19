@@ -1,0 +1,29 @@
+.header {
+  background: var(--primary-color);
+  box-shadow: 0 5px 15px var(--box-shadow-color);
+  color: var(--header-text);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  max-height: 10.4rem;
+  padding: 1.6rem 0;
+
+  .header__image-container {
+    align-items: center;
+    align-self: center;
+    display: flex;
+    height: 100%;
+    max-width: 20rem;
+    width: 100%;
+    gap: 2rem;
+
+    .header__image {
+      max-width: 4.5rem;
+    }
+
+    .header__text {
+      font-size: 4rem;
+      font-weight: bold;
+    }
+  }
+}
