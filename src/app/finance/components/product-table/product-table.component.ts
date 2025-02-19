@@ -1,4 +1,5 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
+import {ProductService} from '../../services/product.service';
 
 @Component({
   selector: 'bp-product-table',
@@ -7,6 +8,6 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductTableComponent {
-
+export class ProductTableComponent implements OnInit {
+  #productService: ProductService = inject(ProductService);
 }
