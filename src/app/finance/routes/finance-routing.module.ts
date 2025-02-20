@@ -12,6 +12,14 @@ const routes: Routes = [
         loadComponent: () => import('../components/product-table/product-table.component').then(m => m.ProductTableComponent)
       },
       {
+        path: 'edit-product/:id',
+        loadComponent: () => import('../components/edit-product/edit-product.component').then(m => m.EditProductComponent)
+      },
+      {
+        path: 'edit-product',
+        loadComponent: () => import('../components/edit-product/edit-product.component').then(m => m.EditProductComponent)
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'product'

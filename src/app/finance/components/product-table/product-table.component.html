@@ -1,1 +1,76 @@
-<p>product-table works!</p>
+<section class="financial-product__container">
+  <ng-template #viewContainerRef></ng-template>
+
+  <bp-product-skeleton *ngIf="isLoading"/>
+
+  <div class="financial-product__search" *ngIf="!isLoading">
+    <input type="text" placeholder="Search..." class="input" (input)="onSearch()" [(ngModel)]="productSearch">
+    <button class="btn btn-main" routerLink="../edit-product">Agregar</button>
+  </div>
+
+  <div class="financial-product__table-container" *ngIf="!isLoading">
+    <table class="financial-product__table font-m">
+      <thead>
+      <tr>
+        <th>Logo</th>
+
+        <th>Nombre del Producto</th>
+
+        <th>Descripcion <i class="bp-icon-info"></i></th>
+
+        <th>Fecha de Libreracion <i class="bp-icon-info"></i></th>
+
+        <th>Fecha de Revision <i class="bp-icon-info"></i></th>
+
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let product of filterProduct;let i = index;trackBy:trackByProductId">
+        <td>
+          <div class="financial-product__logo">
+            <img src="{{product.logo}}"
+                 alt="product logo"
+                 class="w-100"
+                 loading="lazy"
+                 (error)="errorLoadImage(image)"
+                 #image
+            >
+          </div>
+        </td>
+
+        <td>{{ product.name }}</td>
+
+        <td>{{ product.description }}</td>
+
+        <td>{{ product.date_release | date:'dd/MM/yyyy' }}</td>
+
+        <td>{{ product.date_revision | date:'dd/MM/yyyy' }}</td>
+
+        <td>
+          <button class="btn-icon btn__action" (click)="toggleMenu(i)">
+            <span>...</span>
+          </button>
+
+          <div class="financial-product__contextual-menu"
+               [ngClass]="{ 'financial-product__contextual-menu--active': showMenuIndex === i }">
+            <a class="financial-product__contextual-item" routerLink="../edit-product/{{product.id}}">Edit</a>
+
+            <div class="financial-product__contextual-item" (click)="deleteFinancialProduct(product)">Delete</div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="financial-product__result-container">
+      <span class="financial-product__total-span"> {{ totalProducts }} resultados</span>
+      <select class="select" (change)="changeLimitPerPage(selectTotal)" #selectTotal>
+        <option value="5" selected>5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+      </select>
+    </div>
+  </div>
+</section>

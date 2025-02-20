@@ -1,0 +1,26 @@
+.skeleton-financial-product {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 120rem;
+
+  .skeleton-financial-product__header {
+    display: flex;
+    height: 5rem;
+    width: 100%;
+    justify-content: space-between;
+
+    div {
+      width: 13%;
+    }
+  }
+
+  .skeleton-financial-product__body {
+    border-radius: 4px;
+    display: inline-block;
+    line-height: 1;
+    width: 100%;
+    height: 30rem;
+    margin: 14px 0px 14px;
+  }
+}

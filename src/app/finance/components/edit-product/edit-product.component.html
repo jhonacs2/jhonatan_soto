@@ -1,0 +1,126 @@
+<section class="sign-in">
+  <div class="sign-in__container">
+    <div class="sign-in-title">
+      <h3>Formulario De Registro</h3>
+    </div>
+
+    <form class="sign-in__form-container" [formGroup]="signInFormGroup" (ngSubmit)="onSend()">
+      <div class="sign-in__input-form">
+        <label for="id">ID</label>
+        <input class="input" id="id" type="text" formControlName="id" autocomplete="off"
+               [ngClass]="{'input--error':this.signInFormGroup.get('id')?.status === 'INVALID' && this.signInFormGroup.get('id')?.touched}">
+
+        <small class="input-message--error"
+               *ngIf="((this.signInFormGroup.get('id')?.touched!)  && this.signInFormGroup.get('id')?.errors?.['idAlreadyExists'])">
+          ID no valido!
+        </small>
+
+        <small class="input-message--error"
+               *ngIf="((this.signInFormGroup.get('id')?.touched!)
+               && this.signInFormGroup.get('id')?.errors?.['maxlength']
+               || this.signInFormGroup.get('id')?.errors?.['minlength'])">
+          Minimo 3 caracteres y Maximo 10
+        </small>
+
+        <small class="input-message--error"
+               *ngIf="((this.signInFormGroup.get('id')?.touched!)  && this.signInFormGroup.get('id')?.errors?.['required'])">
+          ID es requerido!
+        </small>
+
+      </div>
+
+      <div class=" sign-in__input-form">
+        <label for="name">Nombre</label>
+        <input class="input"
+               id="name"
+               type="text"
+               formControlName="name"
+               autocomplete="off"
+               [ngClass]="{'input--error':this.signInFormGroup.get('name')?.status === 'INVALID'
+               && this.signInFormGroup.get('name')?.touched}">
+
+        <small class="input-message--error"
+               *ngIf="((this.signInFormGroup.get('name')?.touched!)  && this.signInFormGroup.get('name')?.errors?.['required'])">
+          Nombre es requerido!
+        </small>
+
+        <small class="input-message--error"
+               *ngIf="((this.signInFormGroup.get('name')?.touched!)
+               && this.signInFormGroup.get('name')?.errors?.['maxlength']
+               || this.signInFormGroup.get('name')?.errors?.['minlength'])">
+          Minimo 5 caracteres y Maximo 100
+        </small>
+      </div>
+
+      <div class="sign-in__input-form">
+        <label for="description">Descripcion</label>
+        <input class="input"
+               id="description"
+               type="text"
+               formControlName="description"
+               autocomplete="off"
+               [ngClass]="{'input--error':this.signInFormGroup.get('description')?.status === 'INVALID'
+               && this.signInFormGroup.get('description')?.touched}">
+
+        <small class="input-message--error"
+               *ngIf="((this.signInFormGroup.get('description')?.touched!)  && this.signInFormGroup.get('description')?.errors?.['required'])">
+          La Descripcion es requerida!
+        </small>
+
+        <small class="input-message--error"
+               *ngIf="((this.signInFormGroup.get('description')?.touched!)
+               && this.signInFormGroup.get('description')?.errors?.['maxlength']
+               || this.signInFormGroup.get('description')?.errors?.['minlength'])">
+          Minimo 10 caracteres y Maximo 200
+        </small>
+      </div>
+
+      <div class="sign-in__input-form">
+        <label for="logo">Logo</label>
+
+        <input class="input" id="logo" type="text" formControlName="logo"
+               [ngClass]="{'input--error':this.signInFormGroup.get('logo')?.status === 'INVALID'
+               && this.signInFormGroup.get('logo')?.touched}">
+
+        <small class="input-message--error"
+               *ngIf="((this.signInFormGroup.get('logo')?.touched!)  && this.signInFormGroup.get('logo')?.errors?.['required'])">
+          El logo es requerido!
+        </small>
+      </div>
+
+      <div class="sign-in__input-form">
+        <label for="releaseDate">Fecha de Liberacion</label>
+
+        <input class="input"
+               id="releaseDate"
+               type="date"
+               formControlName="releaseDate"
+               [ngClass]="{'input--error':this.signInFormGroup.get('releaseDate')?.status === 'INVALID'
+               && this.signInFormGroup.get('releaseDate')?.touched}">
+
+        <small class="input-message--error"
+               *ngIf="((this.signInFormGroup.get('releaseDate')?.touched!)
+               && this.signInFormGroup.get('releaseDate')?.errors?.['required'])">
+          La Fecha de Liberacion es requerida!
+        </small>
+
+        <small class="input-message--error"
+               *ngIf="((this.signInFormGroup.get('releaseDate')?.touched!)
+               && this.signInFormGroup.get('releaseDate')?.errors?.['invalidDate'])">
+          La Fecha tiene que ser igual o mayor a la actual!
+        </small>
+      </div>
+
+      <div class="sign-in__input-form">
+        <label for="reviewDate">Fecha de Revision</label>
+
+        <input class="input" id="reviewDate" type="date" formControlName="reviewDate">
+      </div>
+    </form>
+
+    <div class="sign-in__submit-container">
+      <button class="btn" (click)="onResetForm()" [disabled]="isEditable">Reiniciar</button>
+      <button class="btn btn-main" (click)="onSend()" [disabled]="signInFormGroup.status !== 'VALID'">Enviar</button>
+    </div>
+  </div>
+</section>
