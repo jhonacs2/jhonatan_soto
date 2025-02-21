@@ -1,11 +1,11 @@
-<section class="sign-in">
-  <div class="sign-in__container">
-    <div class="sign-in-title">
+<section class="edit-product">
+  <div class="edit-product__container">
+    <div class="edit-product-title">
       <h3>Formulario De Registro</h3>
     </div>
 
-    <form class="sign-in__form-container" [formGroup]="signInFormGroup" (ngSubmit)="onSend()">
-      <div class="sign-in__input-form">
+    <form class="edit-product__form-container" [formGroup]="signInFormGroup" (ngSubmit)="onSend()">
+      <div class="edit-product__input-form">
         <label for="id">ID</label>
         <input class="input" id="id" type="text" formControlName="id" autocomplete="off"
                [ngClass]="{'input--error':this.signInFormGroup.get('id')?.status === 'INVALID' && this.signInFormGroup.get('id')?.touched}">
@@ -29,7 +29,7 @@
 
       </div>
 
-      <div class=" sign-in__input-form">
+      <div class=" edit-product__input-form">
         <label for="name">Nombre</label>
         <input class="input"
                id="name"
@@ -52,7 +52,7 @@
         </small>
       </div>
 
-      <div class="sign-in__input-form">
+      <div class="edit-product__input-form">
         <label for="description">Descripcion</label>
         <input class="input"
                id="description"
@@ -75,7 +75,7 @@
         </small>
       </div>
 
-      <div class="sign-in__input-form">
+      <div class="edit-product__input-form">
         <label for="logo">Logo</label>
 
         <input class="input" id="logo" type="text" formControlName="logo"
@@ -88,7 +88,7 @@
         </small>
       </div>
 
-      <div class="sign-in__input-form">
+      <div class="edit-product__input-form">
         <label for="releaseDate">Fecha de Liberacion</label>
 
         <input class="input"
@@ -111,14 +111,14 @@
         </small>
       </div>
 
-      <div class="sign-in__input-form">
+      <div class="edit-product__input-form">
         <label for="reviewDate">Fecha de Revision</label>
 
         <input class="input" id="reviewDate" type="date" formControlName="reviewDate">
       </div>
     </form>
 
-    <div class="sign-in__submit-container">
+    <div class="edit-product__submit-container">
       <button class="btn" (click)="onResetForm()" [disabled]="isEditable">Reiniciar</button>
       <button class="btn btn-main" (click)="onSend()" [disabled]="signInFormGroup.status !== 'VALID'">Enviar</button>
     </div>
