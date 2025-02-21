@@ -1,10 +1,10 @@
 # BP
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
+This project is part of a challenge and has been set up with a proxy. You only need to have the backend running. This project is using Angular 15 and requires Node.js version 18.20.6.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `npm install` to install the dependencies, then run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -22,6 +22,27 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+## Proxy
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+This project is using a proxy pointing to the backend at port 3002. If there are any changes, you need to modify the target accordingly:
+
+```json
+{
+  "/api": {
+    "target": "http://localhost:3002",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}
+```
+
+## Docker
+
+To build and run the Docker container for this project, use the following commands:
+
+1. Build the Docker image:
+   ```sh
+   docker build -t bp-app .

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 @Component({
@@ -6,7 +6,8 @@ import {CommonModule} from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './modal-product.component.html',
-  styleUrls: ['./modal-product.component.scss']
+  styleUrls: ['./modal-product.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ModalProductComponent {
   @Input() message: string = '';
